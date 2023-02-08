@@ -1,0 +1,84 @@
+﻿@model WEB.Models.Repair
+@using Microsoft.AspNetCore.Identity
+
+@{
+    ViewData["Title"] = "Редактировать";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Редактировать</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                @*<label asp-for="RepairDate" class="control-label"></label>*@
+                <input asp-for="RepairDate" type="hidden" class="form-control" />
+                <span asp-validation-for="RepairDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<label asp-for="RepairTime" class="control-label"></label>*@
+                <input asp-for="RepairTime" type="hidden" class="form-control" />
+                <span asp-validation-for="RepairTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<label asp-for="RepairChangeDate" class="control-label"></label>*@
+                <input asp-for="RepairChangeDate" type="hidden" class="form-control" />
+                <span asp-validation-for="RepairChangeDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<label asp-for="RepairChangeTime" class="control-label"></label>*@
+                <input asp-for="RepairChangeTime" type="hidden" class="form-control" />
+                <span asp-validation-for="RepairChangeTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<label asp-for="RepairUser" class="control-label"></label>*@
+                <input asp-for="RepairUser" type="hidden" class="form-control" />
+                <span asp-validation-for="RepairUser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionProblem" class="control-label"></label>
+                <textarea asp-for="DescriptionProblem" class="form-control"></textarea>
+                <span asp-validation-for="DescriptionProblem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StatusId" class="control-label"></label>
+                <select asp-for="StatusId" class="form-control" asp-items="ViewBag.StatusId"></select>
+                <span asp-validation-for="StatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EquipmentId" class="control-label"></label>
+                <select asp-for="EquipmentId" class="form-control" asp-items="ViewBag.EquipmentId"></select>
+                <span asp-validation-for="EquipmentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoftId" class="control-label"></label>
+                <select asp-for="SoftId" class="form-control" asp-items="ViewBag.SoftId"></select>
+                <span asp-validation-for="SoftId" class="text-danger"></span>
+            </div>
+            @if (User.IsInRole("admin"))
+            {
+                <div class="form-group">
+                    <label asp-for="ExecutorId" class="control-label"></label>
+                    <select asp-for="ExecutorId" class="form-control" asp-items="ViewBag.ExecutorId"></select>
+                    <span asp-validation-for="ExecutorId" class="text-danger"></span>
+                </div>
+            }
+                <div class="form-group">
+                    <input type="submit" value="Сохранить" class="btn btn-primary" />
+                </div>
+            </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">К списку заявок</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

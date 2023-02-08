@@ -1,0 +1,38 @@
+﻿@model WEB.Models.Accounting
+
+@{
+    ViewData["Title"] = "Удалить";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Удалить</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.AccountingDate)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.AccountingDate)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd class>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Equipment)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Equipment.Name)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index">К списку учёта</a>
+    </form>
+</div>

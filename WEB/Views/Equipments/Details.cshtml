@@ -1,0 +1,36 @@
+﻿@model WEB.Models.Equipment
+
+@{
+    ViewData["Title"] = "Детали";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Детали</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.InventoryNumber)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.InventoryNumber)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.DeliveryYear)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.DeliveryYear)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
+    <a asp-action="Index">К списку техники</a>
+</div>

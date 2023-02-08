@@ -1,0 +1,36 @@
+﻿@model WEB.Models.Accounting
+
+@{
+    ViewData["Title"] = "Детали";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Детали учёта</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.AccountingDate)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.AccountingDate)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Equipment)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Equipment.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
+    <a asp-action="Index">К списку учёта</a>
+</div>

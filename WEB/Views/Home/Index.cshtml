@@ -1,0 +1,116 @@
+﻿@model IEnumerable<WEB.Models.Repair>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@{
+    ViewData["Title"] = "Заявки";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Список заявок</h1>
+
+<p>
+    <a asp-action="Create">Добавить заявку</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RepairDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RepairTime)
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.RepairChangeDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RepairChangeTime)
+        </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.DescriptionProblem)
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Equipment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soft)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Executor)
+        </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RepairUser)
+            </th>
+            *@
+            @if (SignInManager.IsSignedIn(User))
+            {
+            <th class="text-center">
+                Действия
+            </th>
+            }
+            else
+            {
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RepairDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RepairTime)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.RepairChangeDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RepairChangeTime)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.DescriptionProblem)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Status.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Equipment.InventoryNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soft.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Executor.SurName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RepairUser)
+        </td>*@
+
+            @if (User.IsInRole("admin"))
+            {
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            }
+            else if (SignInManager.IsSignedIn(User))
+            {
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Детали</a>
+                </td>
+            }
+            else
+            {
+            }
+        </tr>
+        }
+    </tbody>
+</table>

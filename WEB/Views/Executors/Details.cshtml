@@ -1,0 +1,36 @@
+﻿@model WEB.Models.Executor
+
+@{
+    ViewData["Title"] = "Детали";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Детали</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.SurName)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.SurName)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Patronymic)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Patronymic)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
+    <a asp-action="Index">К списку исполнителей</a>
+</div>
